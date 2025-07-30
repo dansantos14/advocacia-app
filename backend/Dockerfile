@@ -1,24 +1,22 @@
 # Estágio 1: Build da Aplicação com Maven
-# Usamos uma imagem que já tem o Maven e o Java 17 instalados para compilar o projeto.
 FROM maven:3.8-openjdk-17 AS build
 
 # Define o diretório de trabalho dentro do container.
 WORKDIR /app
 
-# Copia apenas o pom.xml primeiro para aproveitar o cache de dependências do Docker.
-COPY pom.xml .
+# CORREÇÃO: Especificamos o caminho a partir da raiz do repositório.
+COPY backend/pom.xml .
 
 # Baixa todas as dependências do projeto.
 RUN mvn dependency:go-offline
 
-# Copia todo o resto do código-fonte do backend.
-COPY src ./src
+# CORREÇÃO: Especificamos o caminho a partir da raiz do repositório.
+COPY backend/src ./src
 
 # Executa o build do Maven para gerar o arquivo .jar, pulando os testes.
 RUN mvn package -DskipTests
 
 # Estágio 2: Execução da Aplicação
-# Usamos uma imagem oficial e mais moderna do Java 17, do projeto Eclipse Temurin.
 FROM eclipse-temurin:17-jre-focal
 
 # Define o diretório de trabalho.
