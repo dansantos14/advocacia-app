@@ -4,8 +4,8 @@ services:
   # Serviço 1: Backend Java (Web Service)
   - type: web
     name: advocacia-api # Nome para o seu backend
-    runtime: java # <<< AQUI definimos o ambiente como JAVA!
-    repo: https://github.com/dansantos14/advocacia-app.git # Opcional, mas bom ter
+    runtime: java
+    repo: https://github.com/dansantos14/advocacia-app.git
     rootDir: backend # Diretório raiz do backend
     buildCommand: "mvn clean package"
     startCommand: "java -jar target/advocacia-danilo-atualizado-0.0.1-SNAPSHOT.jar"
@@ -17,7 +17,7 @@ services:
           property: connectionString
 
   # Serviço 2: Frontend React (Static Site)
-  - type: static
+  - type: static_site # CORRIGIDO de "static" para "static_site"
     name: advocacia-frontend # Nome para o seu frontend
     repo: https://github.com/dansantos14/advocacia-app.git
     rootDir: frontend # Diretório raiz do frontend
