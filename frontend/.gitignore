@@ -1,0 +1,23 @@
+# Arquivos de log e temporários
+*.log
+tmp/
+
+# Dependências do Frontend (React/Vite)
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env
+/frontend/.env.*
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Arquivos de Build do Backend (Java/Maven)
+/backend/target/
+/backend/.settings/
+/backend/.classpath
+/backend/.project
+
+# Arquivos de configuração de IDEs
+.idea/
+.vscode/
+*.iml

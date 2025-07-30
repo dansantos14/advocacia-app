@@ -1,0 +1,16 @@
+com\advocacia\AdvocaciaApiApplication.class
+com\advocacia\UsuarioService.class
+com\advocacia\model\Cliente.class
+com\advocacia\model\Faturamento.class
+com\advocacia\controller\FaturamentoController.class
+com\advocacia\model\Processo.class
+com\advocacia\repository\ClienteRepository.class
+com\advocacia\model\Usuario.class
+com\advocacia\config\CorsConfig$1.class
+com\advocacia\repository\UsuarioRepository.class
+com\advocacia\controller\ClienteController.class
+com\advocacia\controller\UsuarioController.class
+com\advocacia\repository\FaturamentoRepository.class
+com\advocacia\controller\ProcessoController.class
+com\advocacia\repository\ProcessoRepository.class
+com\advocacia\config\CorsConfig.class
