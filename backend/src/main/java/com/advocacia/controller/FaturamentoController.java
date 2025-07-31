@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/faturamentos")
+@RequestMapping("/api/faturamentos")
 @CrossOrigin(origins = "*")
 public class FaturamentoController {
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/processos")
+@RequestMapping("/api/processos")
 @CrossOrigin(origins = "*")
 public class ProcessoController {
 
