@@ -14,7 +14,7 @@ const ClienteList = () => {
 
   const buscarClientes = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/clientes");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/clientes`);
       setClientes(response.data);
     } catch (error) {
       console.error("Erro ao buscar clientes:", error);
@@ -33,9 +33,9 @@ const ClienteList = () => {
     e.preventDefault();
     try {
       if (cliente.id) {
-        await axios.put(`http://localhost:8080/clientes/${cliente.id}`, cliente);
+        await axios.put(`${import.meta.env.VITE_API_URL}/clientes/${cliente.id}`, cliente);
       } else {
-        await axios.post("http://localhost:8080/clientes", cliente);
+        await axios.post(`${import.meta.env.VITE_API_URL}/clientes`, cliente);
       }
       setCliente({ id: null, nome: "", email: "", cpfCnpj: "", telefone: "", endereco: "" });
       buscarClientes();
@@ -52,7 +52,7 @@ const ClienteList = () => {
   const excluirCliente = async (id) => {
     if (!window.confirm("Deseja excluir este cliente?")) return;
     try {
-      await axios.delete(`http://localhost:8080/clientes/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/clientes/${id}`);
       buscarClientes();
     } catch (error) {
       console.error("Erro ao excluir cliente:", error);
@@ -69,68 +69,30 @@ const ClienteList = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label>Nome</label>
-              <input
-                type="text"
-                name="nome"
-                value={cliente.nome}
-                onChange={handleChange}
-                className="form-control"
-                required
-              />
+              <input type="text" name="nome" value={cliente.nome} onChange={handleChange} className="form-control" required />
             </div>
             <div className="mb-3">
               <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={cliente.email}
-                onChange={handleChange}
-                className="form-control"
-                required
-              />
+              <input type="email" name="email" value={cliente.email} onChange={handleChange} className="form-control" required />
             </div>
             <div className="mb-3">
               <label>CPF/CNPJ</label>
-              <input
-                type="text"
-                name="cpfCnpj"
-                value={cliente.cpfCnpj}
-                onChange={handleChange}
-                className="form-control"
-              />
+              <input type="text" name="cpfCnpj" value={cliente.cpfCnpj} onChange={handleChange} className="form-control" />
             </div>
             <div className="mb-3">
               <label>Telefone</label>
-              <input
-                type="text"
-                name="telefone"
-                value={cliente.telefone}
-                onChange={handleChange}
-                className="form-control"
-              />
+              <input type="text" name="telefone" value={cliente.telefone} onChange={handleChange} className="form-control" />
             </div>
             <div className="mb-3">
               <label>Endereço</label>
-              <input
-                type="text"
-                name="endereco"
-                value={cliente.endereco}
-                onChange={handleChange}
-                className="form-control"
-              />
+              <input type="text" name="endereco" value={cliente.endereco} onChange={handleChange} className="form-control" />
             </div>
             <div className="d-grid gap-2">
               <button type="submit" className="btn btn-primary">
                 {cliente.id ? "Atualizar" : "Cadastrar"}
               </button>
               {cliente.id && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setCliente({ id: null, nome: "", email: "", cpfCnpj: "", telefone: "", endereco: "" })
-                  }
-                  className="btn btn-secondary"
-                >
+                <button type="button" onClick={() => setCliente({ id: null, nome: "", email: "", cpfCnpj: "", telefone: "", endereco: "" })} className="btn btn-secondary">
                   Cancelar
                 </button>
               )}

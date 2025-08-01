@@ -14,7 +14,7 @@ const ClienteEditForm = () => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/clientes/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/clientes/${id}`)
       .then(response => setCliente(response.data))
       .catch(error => console.error('Erro ao carregar cliente:', error));
   }, [id]);
@@ -26,7 +26,7 @@ const ClienteEditForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.put(`http://localhost:8080/clientes/${id}`, cliente)
+    axios.put(`${import.meta.env.VITE_API_URL}/clientes/${id}`, cliente)
       .then(() => navigate('/clientes'))
       .catch(error => console.error('Erro ao atualizar cliente:', error));
   };

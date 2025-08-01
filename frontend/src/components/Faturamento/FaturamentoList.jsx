@@ -6,7 +6,7 @@ const FaturamentoList = () => {
   const [faturamentos, setFaturamentos] = useState([]);
 
   const fetchFaturamentos = async () => {
-    const response = await axios.get('http://localhost:8080/faturamentos');
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/faturamentos`);
     setFaturamentos(response.data);
   };
 
@@ -15,21 +15,15 @@ const FaturamentoList = () => {
   }, []);
 
   const handleSubmit = async (novoFaturamento) => {
-    await axios.post('http://localhost:8080/faturamentos', novoFaturamento);
+    await axios.post(`${import.meta.env.VITE_API_URL}/faturamentos`, novoFaturamento);
     fetchFaturamentos();
   };
 
   return (
-    // Container principal que centraliza o conteúdo na tela (vertical e horizontalmente)
-    // Utiliza d-flex, justify-content-center e align-items-center, com altura mínima de 100vh
     <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-      
-      {/* Wrapper para o conteúdo com largura definida para não esticar demais em telas grandes */}
       <div style={{ width: '100%', maxWidth: '800px' }}>
-      
         <h2 className="text-center mb-4">Faturamentos</h2>
         <FaturamentoForm onSubmit={handleSubmit} />
-        
         <ul className="list-group mt-4">
           {faturamentos.map((f) => (
             <li key={f.id} className="list-group-item d-flex justify-content-between align-items-center">
@@ -39,10 +33,10 @@ const FaturamentoList = () => {
             </li>
           ))}
         </ul>
-
       </div>
     </div>
   );
 };
 
 export default FaturamentoList;
+

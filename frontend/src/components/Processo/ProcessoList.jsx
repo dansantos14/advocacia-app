@@ -1,4 +1,3 @@
-// src/components/ProcessoList.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -7,7 +6,7 @@ const ProcessoList = ({ onEdit }) => {
 
   const fetchProcessos = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/processos');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/processos`);
       setProcessos(response.data);
     } catch (error) {
       console.error('Erro ao buscar processos:', error);
@@ -16,7 +15,7 @@ const ProcessoList = ({ onEdit }) => {
 
   const handleDelete = async (numeroProcesso) => {
     try {
-      await axios.delete(`http://localhost:8080/processos/${numeroProcesso}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/processos/${numeroProcesso}`);
       fetchProcessos();
     } catch (error) {
       console.error('Erro ao excluir processo:', error);
@@ -62,6 +61,3 @@ const ProcessoList = ({ onEdit }) => {
 };
 
 export default ProcessoList;
-
-
-

@@ -18,7 +18,7 @@ const UsuarioForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/usuarios', usuario);
+      await axios.post(`${import.meta.env.VITE_API_URL}/usuarios`, usuario);
       alert('Usuário cadastrado com sucesso!');
       setUsuario({ login: '', senha: '' });
     } catch (error) {
@@ -68,4 +68,5 @@ const UsuarioForm = () => {
 };
 
 export default UsuarioForm;
+
 

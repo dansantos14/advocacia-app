@@ -6,7 +6,7 @@ const UsuarioList = () => {
   const [usuarios, setUsuarios] = useState([]);
 
   const fetchUsuarios = async () => {
-    const response = await axios.get('http://localhost:8080/usuarios');
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/usuarios`);
     setUsuarios(response.data);
   };
 
@@ -15,13 +15,12 @@ const UsuarioList = () => {
   }, []);
 
   const handleSubmit = async (novoUsuario) => {
-    await axios.post('http://localhost:8080/usuarios', novoUsuario);
+    await axios.post(`${import.meta.env.VITE_API_URL}/usuarios`, novoUsuario);
     fetchUsuarios();
   };
 
   return (
     <div>
-      <h2></h2>
       <UsuarioForm onSubmit={handleSubmit} />
       <ul>
         {usuarios.map((u) => (
@@ -35,3 +34,4 @@ const UsuarioList = () => {
 };
 
 export default UsuarioList;
+

@@ -1,4 +1,3 @@
-// src/components/Cliente/ClienteForm.jsx
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -19,7 +18,7 @@ const ClienteForm = ({ onClienteCadastrado }) => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8080/clientes", cliente);
+      await axios.post(`${import.meta.env.VITE_API_URL}/clientes`, cliente);
       alert("Cliente cadastrado com sucesso!");
       setCliente({
         nome: "",
@@ -43,65 +42,31 @@ const ClienteForm = ({ onClienteCadastrado }) => {
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Nome</label>
-            <input
-              type="text"
-              className="form-control"
-              name="nome"
-              value={cliente.nome}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" className="form-control" name="nome" value={cliente.nome} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Email</label>
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              value={cliente.email}
-              onChange={handleChange}
-              required
-            />
+            <input type="email" className="form-control" name="email" value={cliente.email} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">CPF/CNPJ</label>
-            <input
-              type="text"
-              className="form-control"
-              name="cpfCnpj"
-              value={cliente.cpfCnpj}
-              onChange={handleChange}
-            />
+            <input type="text" className="form-control" name="cpfCnpj" value={cliente.cpfCnpj} onChange={handleChange} />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Telefone</label>
-            <input
-              type="text"
-              className="form-control"
-              name="telefone"
-              value={cliente.telefone}
-              onChange={handleChange}
-            />
+            <input type="text" className="form-control" name="telefone" value={cliente.telefone} onChange={handleChange} />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Endereço</label>
-            <input
-              type="text"
-              className="form-control"
-              name="endereco"
-              value={cliente.endereco}
-              onChange={handleChange}
-            />
+            <input type="text" className="form-control" name="endereco" value={cliente.endereco} onChange={handleChange} />
           </div>
 
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
-              Cadastrar
-            </button>
+            <button type="submit" className="btn btn-primary">Cadastrar</button>
           </div>
         </form>
       </div>
@@ -110,5 +75,3 @@ const ClienteForm = ({ onClienteCadastrado }) => {
 };
 
 export default ClienteForm;
-
-

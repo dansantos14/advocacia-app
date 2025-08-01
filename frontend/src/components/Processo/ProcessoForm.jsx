@@ -13,7 +13,7 @@ const ProcessoForm = () => {
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/clientes')
+    axios.get(`${import.meta.env.VITE_API_URL}/clientes`)
       .then(response => setClientes(response.data))
       .catch(error => console.error('Erro ao buscar clientes:', error));
   }, []);
@@ -31,7 +31,7 @@ const ProcessoForm = () => {
       cliente: { id: processo.cliente }
     };
 
-    axios.post('http://localhost:8080/processos', payload)
+    axios.post(`${import.meta.env.VITE_API_URL}/processos`, payload)
       .then(() => {
         alert('Processo cadastrado com sucesso!');
         setProcesso({
@@ -55,61 +55,27 @@ const ProcessoForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Número do Processo</label>
-            <input
-              type="text"
-              className="form-control"
-              name="numeroProcesso"
-              value={processo.numeroProcesso}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" className="form-control" name="numeroProcesso" value={processo.numeroProcesso} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Tipo</label>
-            <input
-              type="text"
-              className="form-control"
-              name="tipo"
-              value={processo.tipo}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" className="form-control" name="tipo" value={processo.tipo} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Estágio</label>
-            <input
-              type="text"
-              className="form-control"
-              name="estagio"
-              value={processo.estagio}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" className="form-control" name="estagio" value={processo.estagio} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Data de Entrada</label>
-            <input
-              type="date"
-              className="form-control"
-              name="dataEntrada"
-              value={processo.dataEntrada}
-              onChange={handleChange}
-              required
-            />
+            <input type="date" className="form-control" name="dataEntrada" value={processo.dataEntrada} onChange={handleChange} required />
           </div>
 
           <div className="mb-3">
             <label className="form-label">Cliente</label>
-            <select
-              className="form-select"
-              name="cliente"
-              value={processo.cliente || ''}
-              onChange={handleChange}
-              required
-            >
+            <select className="form-select" name="cliente" value={processo.cliente || ''} onChange={handleChange} required>
               <option value="">Selecione um cliente</option>
               {clientes.map(cliente => (
                 <option key={cliente.id} value={cliente.id}>
@@ -119,9 +85,7 @@ const ProcessoForm = () => {
             </select>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">
-            Cadastrar
-          </button>
+          <button type="submit" className="btn btn-primary w-100">Cadastrar</button>
         </form>
       </div>
     </div>
@@ -129,7 +93,3 @@ const ProcessoForm = () => {
 };
 
 export default ProcessoForm;
-
-
-
-
