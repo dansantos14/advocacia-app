@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom"; 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Layouts e Páginas Principais
 import LandingPage from "./components/LandingPage";
@@ -20,29 +20,31 @@ import ListarFaturamentos from "./components/Faturamento/FaturamentoList";
 
 function App() {
   return (
-    <Routes>
-      {/* Rota 1: Página de Apresentação (sem menu) */}
-      <Route path="/" element={<LandingPage />} />
-      
-      {/* Rota 2: Página de Login (sem menu) */}
-      <Route path="/login" element={<LoginForm />} />
+    <BrowserRouter>
+      <Routes>
+        {/* Rota 1: Página de Apresentação (sem menu) */}
+        <Route path="/" element={<LandingPage />} />
 
-      {/* Rota 3: Rotas Internas (com menu) */}
-      <Route element={<MainLayout />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/clientes" element={<ClienteList />} />
-        <Route path="/clientes/novo" element={<ClienteForm />} />
-        <Route path="/clientes/editar/:id" element={<ClienteEditForm />} />
-        <Route path="/processos" element={<ProcessoList />} />
-        <Route path="/processos/novo" element={<ProcessoForm />} />
-        <Route path="/processos/editar/:numeroProcesso" element={<ProcessoForm />}/>
-        <Route path="/usuarios" element={<UsuarioList />} />
-        <Route path="/usuarios/novo" element={<UsuarioForm />} />
-        <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
-        <Route path="/faturamento" element={<ListarFaturamentos />} />
-        <Route path="/faturamento/novo" element={<FormFaturamento />} />
-      </Route>
-    </Routes>
+        {/* Rota 2: Página de Login (sem menu) */}
+        <Route path="/login" element={<LoginForm />} />
+
+        {/* Rota 3: Rotas Internas (com menu) */}
+        <Route element={<MainLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/clientes" element={<ClienteList />} />
+          <Route path="/clientes/novo" element={<ClienteForm />} />
+          <Route path="/clientes/editar/:id" element={<ClienteEditForm />} />
+          <Route path="/processos" element={<ProcessoList />} />
+          <Route path="/processos/novo" element={<ProcessoForm />} />
+          <Route path="/processos/editar/:numeroProcesso" element={<ProcessoForm />} />
+          <Route path="/usuarios" element={<UsuarioList />} />
+          <Route path="/usuarios/novo" element={<UsuarioForm />} />
+          <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
+          <Route path="/faturamento" element={<ListarFaturamentos />} />
+          <Route path="/faturamento/novo" element={<FormFaturamento />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
