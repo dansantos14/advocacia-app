@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Layouts e Páginas Principais
 import LandingPage from "./components/LandingPage";
 import MainLayout from "./components/MainLayout";
 import LoginForm from "./components/LoginForm";
-import Home from "./components/Home"; // Pode ser um dashboard interno
+import Home from "./components/Home";
 
 // Componentes das rotas
 import ClienteList from "./components/Cliente/ClienteList";
@@ -20,32 +20,32 @@ import ListarFaturamentos from "./components/Faturamento/FaturamentoList";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Rota 1: Página de Apresentação (sem menu) */}
-        <Route path="/" element={<LandingPage />} />
+    <Routes>
+      {/* Rota 1: Página de Apresentação (sem menu) */}
+      <Route path="/" element={<LandingPage />} />
 
-        {/* Rota 2: Página de Login (sem menu) */}
-        <Route path="/login" element={<LoginForm />} />
+      {/* Rota 2: Página de Login (sem menu) */}
+      <Route path="/login" element={<LoginForm />} />
 
-        {/* Rota 3: Rotas Internas (com menu) */}
-        <Route element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/clientes" element={<ClienteList />} />
-          <Route path="/clientes/novo" element={<ClienteForm />} />
-          <Route path="/clientes/editar/:id" element={<ClienteEditForm />} />
-          <Route path="/processos" element={<ProcessoList />} />
-          <Route path="/processos/novo" element={<ProcessoForm />} />
-          <Route path="/processos/editar/:numeroProcesso" element={<ProcessoForm />} />
-          <Route path="/usuarios" element={<UsuarioList />} />
-          <Route path="/usuarios/novo" element={<UsuarioForm />} />
-          <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
-          <Route path="/faturamento" element={<ListarFaturamentos />} />
-          <Route path="/faturamento/novo" element={<FormFaturamento />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      {/* Rota 3: Rotas Internas (com menu) */}
+      <Route element={<MainLayout />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/clientes" element={<ClienteList />} />
+        <Route path="/clientes/novo" element={<ClienteForm />} />
+        <Route path="/clientes/editar/:id" element={<ClienteEditForm />} />
+        <Route path="/processos" element={<ProcessoList />} />
+        <Route path="/processos/novo" element={<ProcessoForm />} />
+        <Route path="/processos/editar/:numeroProcesso" element={<ProcessoForm />} />
+        <Route path="/usuarios" element={<UsuarioList />} />
+        <Route path="/usuarios/novo" element={<UsuarioForm />} />
+        <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
+        <Route path="/faturamento" element={<ListarFaturamentos />} />
+        <Route path="/faturamento/novo" element={<FormFaturamento />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+
+
