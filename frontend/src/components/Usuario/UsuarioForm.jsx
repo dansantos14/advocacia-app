@@ -19,6 +19,8 @@ const UsuarioForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("API URL:", import.meta.env.VITE_API_URL);
+    
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/usuarios`, usuario);
       alert('Usuário cadastrado com sucesso!');

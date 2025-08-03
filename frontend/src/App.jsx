@@ -14,7 +14,7 @@ import ClienteEditForm from "./components/Cliente/ClienteEditForm";
 import ProcessoList from "./components/Processo/ProcessoList";
 import ProcessoForm from "./components/Processo/ProcessoForm";
 import UsuarioList from "./components/Usuario/UsuarioList";
-import UsuarioForm from "./components/Usuario/UsuarioForm";
+import UsuarioForm from "./components/Usuario/UsuarioForm";  // Import correto
 import FormFaturamento from "./components/Faturamento/FaturamentoForm";
 import ListarFaturamentos from "./components/Faturamento/FaturamentoList";
 
@@ -30,15 +30,23 @@ function App() {
       {/* Rota 3: Rotas Internas (com menu) */}
       <Route element={<MainLayout />}>
         <Route path="/home" element={<Home />} />
+
+        {/* Clientes */}
         <Route path="/clientes" element={<ClienteList />} />
         <Route path="/clientes/novo" element={<ClienteForm />} />
         <Route path="/clientes/editar/:id" element={<ClienteEditForm />} />
+
+        {/* Processos */}
         <Route path="/processos" element={<ProcessoList />} />
         <Route path="/processos/novo" element={<ProcessoForm />} />
         <Route path="/processos/editar/:numeroProcesso" element={<ProcessoForm />} />
+
+        {/* Usuários */}
         <Route path="/usuarios" element={<UsuarioList />} />
         <Route path="/usuarios/novo" element={<UsuarioForm />} />
         <Route path="/usuarios/editar/:id" element={<UsuarioForm />} />
+
+        {/* Faturamento */}
         <Route path="/faturamento" element={<ListarFaturamentos />} />
         <Route path="/faturamento/novo" element={<FormFaturamento />} />
       </Route>
@@ -47,5 +55,8 @@ function App() {
 }
 
 export default App;
+
+
+
 
 
