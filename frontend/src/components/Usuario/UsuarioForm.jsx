@@ -5,6 +5,8 @@ const UsuarioForm = () => {
   const [usuario, setUsuario] = useState({
     login: '',
     senha: '',
+    nome: '',
+    email: '',
   });
 
   const handleChange = (e) => {
@@ -20,7 +22,7 @@ const UsuarioForm = () => {
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/usuarios`, usuario);
       alert('Usuário cadastrado com sucesso!');
-      setUsuario({ login: '', senha: '' });
+      setUsuario({ login: '', senha: '', nome: '', email: '' });
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);
       alert('Erro ao cadastrar usuário.');
@@ -56,6 +58,30 @@ const UsuarioForm = () => {
               required
             />
           </div>
+          <div className="mb-3">
+            <label htmlFor="nome" className="form-label">Nome</label>
+            <input
+              type="text"
+              className="form-control"
+              id="nome"
+              name="nome"
+              value={usuario.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={usuario.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="d-grid">
             <button type="submit" className="btn btn-primary">
               Cadastrar
@@ -68,5 +94,3 @@ const UsuarioForm = () => {
 };
 
 export default UsuarioForm;
-
-
