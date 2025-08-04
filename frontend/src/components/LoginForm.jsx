@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [login, setLogin] = useState("");
@@ -7,16 +8,21 @@ function LoginForm() {
   const [erro, setErro] = useState("");
   const [usuarioAutenticado, setUsuarioAutenticado] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro("");
 
     try {
-      const response = axios.post("http://localhost:8080/api/usuarios/login", { login, senha });
+      const response = await axios.post("http://localhost:8080/api/usuarios/login", {
+        login,
+        senha,
+      });
 
       setUsuarioAutenticado(response.data);
       alert("Login realizado com sucesso!");
-      // Aqui você pode redirecionar para outra página ou armazenar em localStorage
+      navigate("/home"); // Redireciona para a página Home
     } catch (err) {
       console.error("Erro ao realizar login:", err);
       setErro("Login ou senha inválidos.");
