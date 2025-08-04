@@ -12,10 +12,7 @@ function LoginForm() {
     setErro("");
 
     try {
-      const response = await axios.post("http://localhost:8080/usuarios/login", {
-        login,
-        senha,
-      });
+      const response = axios.post("http://localhost:8080/api/usuarios/login", { login, senha });
 
       setUsuarioAutenticado(response.data);
       alert("Login realizado com sucesso!");

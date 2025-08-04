@@ -5,6 +5,8 @@ import com.advocacia.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UsuarioService {
 
@@ -12,14 +14,12 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario buscarPorEmail(String email) {
-        return usuarioRepository.findByEmail(email);
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
+        return optionalUsuario.orElse(null);
     }
 
     public Usuario autenticar(String login, String senha) {
-        Usuario usuario = usuarioRepository.findByLogin(login);
-        if (usuario != null && usuario.getSenha().equals(senha)) {
-            return usuario;
-        }
-        return null;
+        return usuarioRepository.findByLoginAndSenha(login, senha).orElse(null);
     }
+
 }

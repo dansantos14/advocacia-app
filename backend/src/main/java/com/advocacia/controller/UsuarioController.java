@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -53,11 +54,12 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<Usuario> login(@RequestBody Usuario usuarioLogin) {
-        Usuario usuario = usuarioRepository.findByLogin(usuarioLogin.getLogin());
-        if (usuario != null && usuario.getSenha().equals(usuarioLogin.getSenha())) {
+        Usuario usuario = usuarioService.autenticar(usuarioLogin.getLogin(), usuarioLogin.getSenha());
+        if (usuario != null) {
+            usuario.setSenha(null); // não enviar senha para frontend
             return ResponseEntity.ok(usuario);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
+
 }
