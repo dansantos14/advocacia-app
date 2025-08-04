@@ -10,19 +10,25 @@ function LoginForm() {
 
   const navigate = useNavigate();
 
+  // Detecta o ambiente e define a URL da API
+  const API_BASE_URL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:8080"
+      : "https://www.daniloaugustosantos.com.br";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro("");
 
     try {
-      const response = await axios.post("http://localhost:8080/api/usuarios/login", {
+      const response = await axios.post(`${API_BASE_URL}/api/usuarios/login`, {
         login,
         senha,
       });
 
       setUsuarioAutenticado(response.data);
       alert("Login realizado com sucesso!");
-      navigate("/home"); // Redireciona para a página Home
+      navigate("/home");
     } catch (err) {
       console.error("Erro ao realizar login:", err);
       setErro("Login ou senha inválidos.");
@@ -65,3 +71,4 @@ function LoginForm() {
 }
 
 export default LoginForm;
+
