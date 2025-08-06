@@ -11,10 +11,7 @@ function LoginForm() {
   const navigate = useNavigate();
 
   // Detecta o ambiente e define a URL da API
-  const API_BASE_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:8080"
-      : "https://www.daniloaugustosantos.com.br";
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
