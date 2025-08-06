@@ -16,7 +16,8 @@ public class CorsConfig {
                         .allowedOrigins(
                                 "http://localhost:5173",
                                 "http://localhost:4173",
-                                "https://www.daniloaugustosantos.com.br")
+                                "https://www.daniloaugustosantos.com.br",
+                                "https://daniloaugustosantos.com.br")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
