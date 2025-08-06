@@ -10,7 +10,6 @@ function LoginForm() {
 
   const navigate = useNavigate();
 
-  // Detecta o ambiente e define a URL da API
   const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
@@ -18,7 +17,7 @@ function LoginForm() {
     setErro("");
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/usuarios/login`, {
+      const response = await axios.post(`${API_BASE_URL}/usuarios/login`, {
         login,
         senha,
       });
@@ -68,4 +67,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
